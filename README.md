@@ -1,2 +1,2 @@
 # Screenshot-Tool
-Useful tool for taken screenshots.
+Useful tool for taking screenshots.
