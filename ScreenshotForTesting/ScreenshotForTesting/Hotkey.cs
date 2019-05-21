@@ -31,6 +31,7 @@ namespace ScreenshotApp
         public void UnRegisterHotKeys()
         {
             UnregisterHotKey(_hWnd, 1);
+            UnregisterHotKey(_hWnd, 2);
         }
 
         #region WindowsAPI
