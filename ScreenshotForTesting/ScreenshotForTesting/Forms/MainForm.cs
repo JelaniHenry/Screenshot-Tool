@@ -154,8 +154,14 @@ namespace ScreenshotApp
             //If Preview Capture checkbox is checked display active.
             if (preview)
             {
+                if (WindowState == FormWindowState.Minimized)
+                {
+                    WindowState = FormWindowState.Normal;
+                }
+
                 Activate();
             }
+
             pictureBox1.Enabled = true;
         }
 
