@@ -73,7 +73,7 @@ namespace ScreenshotForTesting
             {
                 //save graphic variable into memory
                 printscreen.Save(s, ImageFormat.Bmp);
-                pictureBox1.Size = new System.Drawing.Size(this.Width, this.Height);
+                pictureBox1.Size = new Size(Width, Height);
                 //set the picture box with temporary stream
                 pictureBox1.Image = Image.FromStream(s);
             }
@@ -86,7 +86,7 @@ namespace ScreenshotForTesting
             Cursor = Cursors.Cross;
         }
 
-        void ShowOnScreen(int screenNumber)
+        private void ShowOnScreen(int screenNumber)
         {
             Screen[] screens = Screen.AllScreens;
 
@@ -118,7 +118,6 @@ namespace ScreenshotForTesting
                 //refresh picture box
                 pictureBox1.Refresh();
 
-
                 if (e.X > selectX && e.Y > selectY)
                 {
                     //Top left to bottom right
@@ -130,7 +129,7 @@ namespace ScreenshotForTesting
 
                     position = Position.TopLeft;
                 }
-                else if(e.X < selectX && e.Y < selectY)
+                else if (e.X < selectX && e.Y < selectY)
                 {
                     //bottom right to top left
                     selectWidth = selectX - e.X;
@@ -142,7 +141,7 @@ namespace ScreenshotForTesting
                     position = Position.BottomRight;
                 }
 
-                else if(e.X > selectX && e.Y < selectY)
+                else if (e.X > selectX && e.Y < selectY)
                 {
                     //bottom left to top right
                     selectWidth = e.X - selectX;
@@ -170,7 +169,7 @@ namespace ScreenshotForTesting
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 //starts coordinates for rectangle
                 selectX = e.X;
@@ -195,7 +194,7 @@ namespace ScreenshotForTesting
                 return;
 
             //same functionality when mouse is over
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 pictureBox1.Refresh();
 
@@ -287,9 +286,9 @@ namespace ScreenshotForTesting
                     Graphics g = Graphics.FromImage(_img);
 
                     //set graphic attributes
-                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                    g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-                    g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                    g.CompositingQuality = CompositingQuality.HighQuality;
                     g.DrawImage(OriginalImage, 0, 0, rect, GraphicsUnit.Pixel);
 
                     //insert image stream into clipboard
