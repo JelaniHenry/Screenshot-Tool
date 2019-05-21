@@ -17,5 +17,17 @@ namespace ScreenshotForTesting
             encParams.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
             bitmap.Save(path, encoder, encParams);
         }
+
+        public static string ReplaceInvalidWindowsFileNameCharacters(string fileNameIn)
+        {
+            string fileName = fileNameIn;
+
+            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+            {
+                fileName = fileName.Replace(c, '_');
+            }
+
+            return fileName;
+        }
     }
 }

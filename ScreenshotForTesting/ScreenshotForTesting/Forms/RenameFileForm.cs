@@ -37,7 +37,8 @@ namespace ScreenshotForTesting
                     return;
                 }
 
-                newPath = fullPath.Replace(fileName + ".jpg", textBox1.Text + ".jpg");
+                var newFileName = Common.ReplaceInvalidWindowsFileNameCharacters(textBox1.Text);
+                newPath = fullPath.Replace(fileName + ".jpg", newFileName + ".jpg");
 
                 if (File.Exists(newPath))
                 {

@@ -119,7 +119,7 @@ namespace ScreenshotApp
                 Directory.CreateDirectory(filepath);
             }
 
-            var filename = Filename.Text;
+            var filename = Common.ReplaceInvalidWindowsFileNameCharacters(Filename.Text);
 
             if (filename != previousFileName)
             {
