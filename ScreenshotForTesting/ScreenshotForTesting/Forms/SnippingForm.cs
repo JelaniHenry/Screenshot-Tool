@@ -47,7 +47,8 @@ namespace ScreenshotForTesting
 
             Thread.Sleep(250);
 
-            if (Cursor.Position.X > Screen.AllScreens[0].Bounds.Left && Cursor.Position.X < Screen.AllScreens[0].Bounds.Right)
+            if ((Cursor.Position.X > Screen.AllScreens[0].Bounds.Left && Cursor.Position.X < Screen.AllScreens[0].Bounds.Right) && 
+                (Cursor.Position.Y > Screen.AllScreens[0].Bounds.Top && Cursor.Position.Y < Screen.AllScreens[0].Bounds.Bottom))
             {
                 activeScreen = 0;
                 ShowOnScreen(0);

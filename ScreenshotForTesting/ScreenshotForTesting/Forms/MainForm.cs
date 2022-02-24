@@ -13,7 +13,6 @@ using System.Collections.Specialized;
 using ScreenshotForTesting.Forms;
 using System.Threading.Tasks;
 using System.Net.Mail;
-using Tesseract;
 
 namespace ScreenshotApp
 {
