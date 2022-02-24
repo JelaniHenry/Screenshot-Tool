@@ -186,7 +186,7 @@
             // systemTray
             // 
             this.systemTray.Icon = ((System.Drawing.Icon)(resources.GetObject("systemTray.Icon")));
-            this.systemTray.Text = "System Tray";
+            this.systemTray.Text = "Screenshot Tool";
             this.systemTray.Visible = true;
             this.systemTray.MouseClick += new System.Windows.Forms.MouseEventHandler(this.systemTray_MouseClick);
             // 
