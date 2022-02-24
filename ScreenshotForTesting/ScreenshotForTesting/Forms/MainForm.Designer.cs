@@ -45,9 +45,14 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.previewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.systemTray = new System.Windows.Forms.NotifyIcon(this.components);
+            this.systemTrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.displayUIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
+            this.systemTrayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // Filename
@@ -94,6 +99,7 @@
             this.CaptureHistory.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.File});
             this.CaptureHistory.FullRowSelect = true;
+            this.CaptureHistory.HideSelection = false;
             this.CaptureHistory.Location = new System.Drawing.Point(420, 12);
             this.CaptureHistory.Name = "CaptureHistory";
             this.CaptureHistory.Size = new System.Drawing.Size(182, 300);
@@ -177,6 +183,35 @@
             this.previewToolStripMenuItem.Text = "View";
             this.previewToolStripMenuItem.Click += new System.EventHandler(this.previewToolStripMenuItem_Click);
             // 
+            // systemTray
+            // 
+            this.systemTray.Icon = ((System.Drawing.Icon)(resources.GetObject("systemTray.Icon")));
+            this.systemTray.Text = "System Tray";
+            this.systemTray.Visible = true;
+            this.systemTray.MouseClick += new System.Windows.Forms.MouseEventHandler(this.systemTray_MouseClick);
+            // 
+            // systemTrayMenu
+            // 
+            this.systemTrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.displayUIToolStripMenuItem,
+            this.closeApplicationToolStripMenuItem});
+            this.systemTrayMenu.Name = "systemTrayMenu";
+            this.systemTrayMenu.Size = new System.Drawing.Size(168, 48);
+            // 
+            // displayUIToolStripMenuItem
+            // 
+            this.displayUIToolStripMenuItem.Name = "displayUIToolStripMenuItem";
+            this.displayUIToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.displayUIToolStripMenuItem.Text = "Display UI";
+            this.displayUIToolStripMenuItem.Click += new System.EventHandler(this.displayUIToolStripMenuItem_Click);
+            // 
+            // closeApplicationToolStripMenuItem
+            // 
+            this.closeApplicationToolStripMenuItem.Name = "closeApplicationToolStripMenuItem";
+            this.closeApplicationToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.closeApplicationToolStripMenuItem.Text = "Close Application";
+            this.closeApplicationToolStripMenuItem.Click += new System.EventHandler(this.closeApplicationToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,11 +228,15 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Screenshot Tool";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
+            this.systemTrayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +260,9 @@
         private System.Windows.Forms.ToolStripMenuItem previewToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator sepToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.NotifyIcon systemTray;
+        private System.Windows.Forms.ContextMenuStrip systemTrayMenu;
+        private System.Windows.Forms.ToolStripMenuItem displayUIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeApplicationToolStripMenuItem;
     }
 }

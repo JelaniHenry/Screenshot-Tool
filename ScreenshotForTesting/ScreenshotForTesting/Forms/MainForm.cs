@@ -35,6 +35,8 @@ namespace ScreenshotApp
         private bool inProgress = false;
         public int ImageCount = 1;
 
+        private bool closeFlag = false;
+
         public MainForm()
         {
             InitializeComponent();
@@ -63,6 +65,7 @@ namespace ScreenshotApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.Hide();
             thisWindow = FindWindow(null, "Screenshot Tool");
 
             FillOutSavePath();
@@ -85,6 +88,8 @@ namespace ScreenshotApp
             Filename.Text = "File Name";
 
             InitializeToolTips();
+
+            systemTray.ContextMenuStrip = systemTrayMenu;
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -153,6 +158,8 @@ namespace ScreenshotApp
             //If Preview Capture checkbox is checked display active.
             if (preview)
             {
+                this.Show();
+
                 if (WindowState == FormWindowState.Minimized)
                 {
                     WindowState = FormWindowState.Normal;
@@ -426,6 +433,50 @@ namespace ScreenshotApp
                 {
 
                 }
+            }
+        }
+
+        private void displayUIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void closeApplicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            closeFlag = true;
+            Application.Exit();
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                //Hide();
+            }
+
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                //this.ShowInTaskbar = true;
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closeFlag)
+            {
+                e.Cancel = true;
+            }
+
+            Hide();
+        }
+
+        private void systemTray_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
             }
         }
     }
